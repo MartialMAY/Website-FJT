@@ -383,10 +383,10 @@ $(document).ready(function() {
 });
 
 function loadXmlData() {
-    const proxyUrl = "https://cors-proxy.htmldriven.com/?url=";
+   
   $.ajax({
     type: "GET",  
-    url: proxyUrl + "https://www.rfi.fr/fr/rss", // Remplacez cela par l'URL réelle du flux RSS
+    url: "https://cors-proxy.htmldriven.com/?url=https://www.rfi.fr/fr/rss", // Remplacez cela par l'URL réelle du flux RSS
     dataType: "xml",
     success: function(data) {
       parseXml(data);

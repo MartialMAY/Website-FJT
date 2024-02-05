@@ -50,13 +50,18 @@ jobs:
         cd cors-anywhere
         npm start
 
-      - name: Setup Node.js
-      uses: actions/setup-node@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '14'
 
-      - name: Install dependencies
+    - name: Install dependencies
       run: npm install
 
-      - name: Run development script
+    - name: Run development tasks
       run: npm run dev
+
+    - name: Run JSON tasks
+      run: npm run json
+
+   

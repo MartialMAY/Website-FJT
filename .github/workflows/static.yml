@@ -50,7 +50,33 @@ jobs:
         cd cors-anywhere
         npm start
 
-  
+  jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run npm dev
+      run: npm run dev
+      background: true
+
+    - name: Run npm json
+      run: npm run json
    
 
    

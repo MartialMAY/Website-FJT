@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/accueil.css">
+    <link rel="stylesheet" href="/css/logement.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <title>Horion Jeunes</title>
+    <script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script>
+</head>
+<body>
+   
+     <div class="space">
+        <section class="accueil">
+            <header>
+                <div class="container">
+                    <div class="first-head " >
+                     <div class="logo">
+                         <a href="#"><img src="/ressources/logo.png" alt="logo Hizon Jeunes"></a>
+                    </div>
+
+                    <div class="quick-infos">
+                        <div class="q-contact">
+                            <div class="iconqco"><i class="fa-solid fa-phone"></i></div>
+                            <p><strong>Tél: 05 55 66 13 59</strong> <br> contact@horizonjeune.fr</p>
+                        </div>
+                        <div class="q-adress">
+                            <div class="iconqad"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <p><strong>14c Rue des Fusillés</strong> <br>BP 51, 23200 Aubusson</p>
+                        </div>
+                        <div class="q-reseaux"><i class="fa-brands fa-facebook"></i></div>
+                    </div>
+                </div>
+                </div>
+                
+               <div class=" barnav">
+                 <div class="container">
+                    <div class="navbar" id="menu_">
+                        <ul class="navarea">
+                            <li><a class="btn " href="/index.php"   >Accueil</a></li>
+                            <li class="deroulant"><a class="btn active" href="#" >Services&ensp;</a>
+                                <ul class="sous">
+                                    <li><a href="/pages/logement.html">Hébergement</a></li>
+                                    <li><a href="/pages/insertion.html">Chantier d'insertion</a></li>
+                                    <li><a href="#">Formations</a></li>
+                                    <li><a href="#">Ateliers Numériques</a></li>
+                                </ul>
+                            </li>
+                            <li ><a class="btn" href="#" >Actualités</a></li>
+                            <li ><a class="btn" href="#" class="btn">A propos</a></li>
+                            <li ><a class="btn" href="#" class="btn">Contact</a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+               </div>
+               
+                
+                
+            </header>
+   
+            <section class="head">
+               
+                    <div class="banner-l">
+                        <div class="container">
+                        <div class="title">
+                            <h2 class="h2">Chantier d'insertion</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Ducimus quibusdam at reprehenderit,  </p>
+                            
+                        </div> 
+                    </div>
+                        <div class="line-g"></div>
+                        
+                  
+                    
+               
+                
+            </section>
+    </div>        
+        <section class="footer">
+            <div class="container">
+            <footer>
+                <div class="recap c1">
+                    <div class="title"><h2>Horizon Jeunes <br> Foyer des Jeunes Travailleurs</h2></div>
+                    <br>
+                    <p>14c Rue des Fusillés <br>
+                        BP 51 <br> 23200 Aubusson</p>
+                        <br>
+                        <div class="tel a"><i class="fa fa-phone" aria-hidden="true"></i><p>05 55 66 13 59</p></div>
+                                <div class="mel a"><i class="fa fa-envelope" aria-hidden="true"></i> <p>contact@horizonjeune.fr</p></div>
+                </div>
+                <div class="recap c2">
+                    <ul>
+                        <li><a href="#">Logement</a></li><br>
+                        <li><a href="#">Insertion</a></li><br>
+                        <li><a href="#">Formations</a></li><br>
+                        <li><a href="#">Ateliers Numériques</a></li>
+                    </ul>
+                </div>
+                <div class="recap c3">
+                    
+                    <ul>
+                        <li><a href="#">Actualités</a></li><br>
+                        <li><a href="#">Offres d'emploi</a></li><br>
+                        
+                    </ul>
+                </div>
+                <div class="recap c4">
+                    
+                   <p>Suivez-nous <br> sur les réseaux sociaux</p>
+                   <br>
+                   <div class="social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></div>
+                </div>
+            </footer>
+            <br>
+            <hr>
+            <br>
+            <div class="info-footer">
+                <p>© FJT 2024 - Une réalisation de Martial_MAY</p>
+                <p><a href="">Mentions légales</a></p>
+            </div>
+            <br>
+            </div>
+           
+        </section>
+    
+        <script type="text/javascipt" src="scripts/card-animation.js"></script>
+    
+ 
+    
+  
+</body>
+
+<script>
+    var menus = document.getElementById("menu_");
+var btns = menus.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
+}
+</script>
+</html>

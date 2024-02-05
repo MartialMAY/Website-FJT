@@ -50,11 +50,7 @@ jobs:
         cd cors-anywhere
         npm start
 
-      - run : node
-      - run : npm
-      - run : npm install
-      - run : node server.js
-      - run : nodemon server.js
+  
    
 
    

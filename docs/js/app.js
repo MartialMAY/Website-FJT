@@ -13,6 +13,13 @@ contactForm.addEventListener('submit', (e)=>{
     }
 
     let xhr = new XMLHttpRequest();
+    fetch('https://martialmay.github.io/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    
     xhr.open('POST', '/');
     xhr.setRequestHeader('content-type', 'application/json')
     xhr.onload = function(){

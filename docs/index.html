@@ -383,19 +383,16 @@ $(document).ready(function() {
 });
 
 function loadXmlData() {
-  const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
-  const targetUrl = "https://www.rfi.fr/fr/rss";
-  
+    const proxyUrl = "https://cors-proxy.htmldriven.com/?url=";
   $.ajax({
-    type: "GET",
-    url: corsAnywhereUrl + targetUrl,
+    type: "GET",  
+    url: proxyUrl + "https://www.rfi.fr/fr/rss", // Remplacez cela par l'URL réelle du flux RSS
     dataType: "xml",
     success: function(data) {
       parseXml(data);
     }
   });
 }
-
 
 function parseXml(xml)
 {

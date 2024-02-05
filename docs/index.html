@@ -386,7 +386,7 @@ function loadXmlData() {
    
   $.ajax({
     type: "GET",  
-    url:"https://cors-anywhere.herokuapp.com/https://www.rfi.fr/fr/rss", // Remplacez cela par l'URL réelle du flux RSS
+    url:"http://localhost:3000/proxy?url=https://www.rfi.fr/fr/rss", // Remplacez cela par l'URL réelle du flux RSS
     dataType: "xml",
     success: function(data) {
       parseXml(data);

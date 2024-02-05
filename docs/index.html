@@ -385,7 +385,7 @@ $(document).ready(function() {
 function loadXmlData() {
   $.ajax({
     type: "GET",  
-    url: "http://localhost:8080/https://www.rfi.fr/fr/rss", // Remplacez cela par l'URL réelle du flux RSS
+    url: "https://www.rfi.fr/fr/rss", // Remplacez cela par l'URL réelle du flux RSS
     dataType: "xml",
     success: function(data) {
       parseXml(data);

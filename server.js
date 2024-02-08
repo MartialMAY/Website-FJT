@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 import serverless from "serverless-http";
 import express, { Router } from "express";
-
+require('dotenv').config();
 
 const router = Router();
 const nodemailer = require("nodemailer");
@@ -25,13 +25,10 @@ app.post('/', (req, res)=>{
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-            user: 'lauthentiquemay@gmail.com',
-            pass: 'jqvo omta fbtu nrql',
-        },
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
     })
 
     const mailOptions= {

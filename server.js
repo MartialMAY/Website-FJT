@@ -2,10 +2,6 @@
 const express = require('express');
 const app = express();
 
-
-
-
-
 const nodemailer = require("nodemailer");
 
 const PORT = process.env.PORT || 5000;
@@ -25,10 +21,13 @@ app.post('/', (req, res)=>{
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'lauthentiquemay@gmail.com',
+            pass: 'jqvo omta fbtu nrql',
+        },
     })
 
     const mailOptions= {

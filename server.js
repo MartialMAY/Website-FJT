@@ -1,5 +1,7 @@
 
 const express = require('express');
+const serverless = require("serverless-http");
+const router = express.Router();
 const app = express();
 
 const nodemailer = require("nodemailer");
@@ -9,10 +11,16 @@ app.options('/', (req, res) => {
     res.header('Access-Control-Allow-Methods', 'POST');
     res.send();
 });
+router.get('/', (req, res) => {
+    res.send('App is running..');
+  });
+
+app.use('/.netlify/', router);
+module.exports.handler = serverless(app);
 app.use(express.static('docs'));
 app.use(express.json())
 
-app.get('/', (req, res)=>{
+app.get('/.netlify/', (req, res)=>{
     res.sendFile(__dirname + '/docs/index.html')
 })
 

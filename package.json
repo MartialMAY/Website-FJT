@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "build": "npm run dev"
+    "build": "echo 'No build needed for server-side app'"
   },
   "author": "",
   "license": "ISC",

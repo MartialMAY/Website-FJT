@@ -1,11 +1,11 @@
 
 const express = require('express');
 const app = express();
-import serverless from "serverless-http";
-import express, { Router } from "express";
+
+
 require('dotenv').config();
 
-const router = Router();
+
 const nodemailer = require("nodemailer");
 
 const PORT = process.env.PORT || 5000;

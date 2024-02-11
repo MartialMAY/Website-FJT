@@ -1,4 +1,4 @@
 [build]
     functions = "server.js"
-    command = "echo 'Copying files...' && cp -r docs/* ."
+    
     publish = "docs"

@@ -1,4 +1,3 @@
 [build]
-    functions = "/"
-    
-    publish = "docs"
+  command = "npm install && npm run build"
+  functions = "./"

@@ -1,63 +1,48 @@
 
 const express = require('express');
-const serverless = require("serverless-http");
-const router = express.Router();
+const serverless = require('serverless-http');
+const cors = require('cors');
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 const app = express();
+app.use(express.json());
+app.use(cors());
 
-const nodemailer = require("nodemailer");
+const router = express.Router();
 
-const PORT = process.env.PORT || 5000;
-app.options('/', (req, res) => {
-    res.header('Access-Control-Allow-Methods', 'POST');
-    res.send();
-});
 router.get('/', (req, res) => {
-    res.send('App is running..');
-  });
+  res.send('App is running..');
+});
 
-app.use('/.netlify/', router);
-module.exports.handler = serverless(app);
-app.use(express.static('docs'));
-app.use(express.json())
-
-app.get('/.netlify/', (req, res)=>{
-    res.sendFile(__dirname + '/docs/index.html')
-})
-
-app.post('/', (req, res)=>{
-    console.log(req.body);
-
+router.post('/send-email', async (req, res) => {
+  try {
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-            user: 'lauthentiquemay@gmail.com',
-            pass: 'jqvo omta fbtu nrql',
-        },
-    })
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
 
-    const mailOptions= {
-        from: req.body.name,
-        to: 'lauthentiquemay@gmail.com',
-        subject: `Message de ${req.body.name}: test`,
-        text: req.body.message
+    const mailOptions = {
+      from: req.body.name,
+      to: 'lauthentiquemay@gmail.com',
+      subject: `Message de ${req.body.name}: test`,
+      text: req.body.message,
+    };
 
-    }
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'An error occurred while sending email' });
+  }
+});
 
-    transporter.sendMail(mailOptions, (error, info)=>{
-        if(error){
-            console.log(error);
-            res.send('error');
-        } else{
-            console.log('Email sent: ' + info.response);
-            res.send('success')
-        }
-    })
-})
+app.use('/.netlify/functions/server', router);  // Netlify functions route
 
-
-app.listen(PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
-})
+module.exports = app;
+module.exports.handler = serverless(app);

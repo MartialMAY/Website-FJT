@@ -1,8 +1,8 @@
 
 [build]
 
+command = "npm start"
 
-
-functions = "/.netlify/functions"
+functions = "/.netlify/functions/server"
 
 

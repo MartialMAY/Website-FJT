@@ -8,3 +8,4 @@ targetPort = 5000
 command = "npm start"
 publish = "docs/"
 port = 5000
+functions = "/"

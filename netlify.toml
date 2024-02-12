@@ -1,20 +1,8 @@
-[dev]
-command = "npm start"
-port = 5000
-
-
-NODE_ENV = "12"
-  publish = "/docs"
 
 [build]
-command = "npm run build"
-publish = "/docs"
-port = 5000
-functions = "/"
-targetPort = 5000 
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+
+
+functions = "/.netlify/functions"
+
 

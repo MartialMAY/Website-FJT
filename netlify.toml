@@ -1,6 +1,6 @@
-[build]
-  command = "npm run build"  # Commande de build
-  publish = "docs/"         # Dossier à déployer
-
 [dev]
-  command = "npm start"    
+command = "npm start"
+
+[build]
+command = "npm start"
+publish = "docs/"

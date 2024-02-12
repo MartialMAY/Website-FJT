@@ -1,49 +1,63 @@
 
 const express = require('express');
-const serverless = require('serverless-http');
-const app = express();
-const nodemailer = require('nodemailer');
-
+const serverless = require("serverless-http");
 const router = express.Router();
+const app = express();
 
-router.get('/', (req, res) => {
-  res.send('App is running..');
+const nodemailer = require("nodemailer");
+
+const PORT = process.env.PORT || 5000;
+app.options('/', (req, res) => {
+    res.header('Access-Control-Allow-Methods', 'POST');
+    res.send();
 });
+router.get('/', (req, res) => {
+    res.send('App is running..');
+  });
 
-router.post('/', (req, res) => {
-  console.log(req.body);
+app.use('/.netlify/', router);
+module.exports.handler = serverless(app);
+app.use(express.static('docs'));
+app.use(express.json())
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-        user: 'lauthentiquemay@gmail.com',
-        pass: 'jqvo omta fbtu nrql',
-    },
+app.get('/.netlify/', (req, res)=>{
+    res.sendFile(__dirname + '/docs/index.html')
 })
 
-  const mailOptions = {
-    from: req.body.name,
-    to: 'lauthentiquemay@gmail.com',
-    subject: `Message de ${req.body.name}: test`,
-    text: req.body.message
-  };
+app.post('/', (req, res)=>{
+    console.log(req.body);
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-      res.send('error');
-    } else {
-      console.log('Email sent: ' + info.response);
-      res.send('success');
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'lauthentiquemay@gmail.com',
+            pass: 'jqvo omta fbtu nrql',
+        },
+    })
+
+    const mailOptions= {
+        from: req.body.name,
+        to: 'lauthentiquemay@gmail.com',
+        subject: `Message de ${req.body.name}: test`,
+        text: req.body.message
+
     }
-  });
-});
 
-app.use(express.json());
-app.use('/.netlify/functions/server', router); // Base path for Netlify Functions
-app.use(express.static('docs')); // Assuming your static files are in the 'docs' directory
+    transporter.sendMail(mailOptions, (error, info)=>{
+        if(error){
+            console.log(error);
+            res.send('error');
+        } else{
+            console.log('Email sent: ' + info.response);
+            res.send('success')
+        }
+    })
+})
 
-module.exports.handler = serverless(app);
+
+app.listen(PORT, ()=>{
+    console.log(`Server running on port ${PORT}`)
+})

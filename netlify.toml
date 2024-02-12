@@ -1,7 +1,9 @@
 [dev]
 command = "npm start"
+port = 5000
+publish = "docs/"
 
 [build]
 command = "npm start"
 publish = "docs/"
-PORT = 5000
+port = 5000

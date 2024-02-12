@@ -7,12 +7,12 @@ NODE_ENV = "12"
   publish = "/docs"
 
 [build]
-command = "npm start"
+command = "npm run build"
 publish = "/docs"
 port = 5000
 functions = "/"
 
 [[redirects]]
-  from = "/sever/*"
-  to = "/.netlify/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200

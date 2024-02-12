@@ -1,11 +1,18 @@
 [dev]
 command = "npm start"
 port = 5000
-publish = "docs/"
+
 targetPort = 5000
+NODE_ENV = "12"
+  publish = "/docs"
 
 [build]
 command = "npm start"
-publish = "docs/"
+publish = "/docs"
 port = 5000
 functions = "/"
+
+[[redirects]]
+  from = "/sever/*"
+  to = "/.netlify/:splat"
+  status = 200

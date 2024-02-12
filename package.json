@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "build": "npm start"
+    "build": "echo 'Build step: Your build commands here'"
 
   },
   "author": "",

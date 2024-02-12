@@ -13,7 +13,7 @@ contactForm.addEventListener('submit', (e)=>{
     }
 
     let xhr = new XMLHttpRequest();
-    fetch('https://lucky-rugelach-5ff49c.netlify.app', {
+    fetch('https://main--lucky-rugelach-5ff49c.netlify.app', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

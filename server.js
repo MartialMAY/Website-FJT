@@ -15,12 +15,12 @@ router.get('/', (req, res) => {
     res.send('App is running..');
   });
 
-app.use('/.netlify/', router);
+app.use('/', router);
 module.exports.handler = serverless(app);
 app.use(express.static('docs'));
 app.use(express.json())
 
-app.get('/.netlify/', (req, res)=>{
+app.get('/', (req, res)=>{
     res.sendFile(__dirname + '/docs/index.html')
 })
 
@@ -57,7 +57,4 @@ app.post('/', (req, res)=>{
     })
 })
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+

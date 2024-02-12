@@ -1,8 +1,3 @@
-
-[build]
-
-command = "npm start"
-
-functions = "/.netlify/functions/server"
-
-
+[build] 
+    publish="docs"
+    functions="functions"

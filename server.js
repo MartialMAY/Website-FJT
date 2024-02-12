@@ -14,8 +14,9 @@ app.use(cors());
 const router = express.Router();
 
 app.get('/', (req, res)=>{
-    res.sendFile(__dirname + '/docs/index.html')
+    res.sendFile(__dirname + './docs/index.html')
 })
+
 
 router.post('/send-email', async (req, res) => {
   try {
@@ -41,7 +42,7 @@ router.post('/send-email', async (req, res) => {
     res.status(500).json({ error: 'An error occurred while sending email' });
   }
 });
-app.use(bodyParser.json());
+
 app.use('/.netlify/functions/server', router);  // Netlify functions route
 
 module.exports = app;

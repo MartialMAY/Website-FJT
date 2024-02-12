@@ -4,3 +4,4 @@ command = "npm start"
 [build]
 command = "npm start"
 publish = "docs/"
+PORT = 5000

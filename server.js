@@ -6,7 +6,7 @@ const app = express();
 
 const nodemailer = require("nodemailer");
 
-const PORT = process.env.PORT || 5000;
+
 app.options('/', (req, res) => {
     res.header('Access-Control-Allow-Methods', 'POST');
     res.send();
@@ -57,7 +57,14 @@ app.post('/', (req, res)=>{
     })
 })
 
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
-})
+if (process.env.NODE_ENV === 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+} else {
+    app.listen(8080, () => {
+        console.log('Development server running on port 8080');
+    });
+}

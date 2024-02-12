@@ -2,6 +2,7 @@
 command = "npm start"
 port = 5000
 publish = "docs/"
+targetPort = 5000
 
 [build]
 command = "npm start"
